@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./SumInfo.module.css";
+import classes from "./styles/SumInfo.module.css";
 
 const SumInfo = () => {
   return (

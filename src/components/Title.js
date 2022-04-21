@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Title.module.css";
+import classes from "./styles/Title.module.css";
 
 const Title = () => {
   // const scrollHandler = (e) => {
@@ -13,6 +13,7 @@ const Title = () => {
           CRYPTX <br />
           <br /> Cryptocurrency Tracker
         </h1>
+
         <a
           // onClick={scrollHandler}
           href="#"

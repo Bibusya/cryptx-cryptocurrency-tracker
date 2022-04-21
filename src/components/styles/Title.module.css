@@ -1,5 +1,5 @@
 section {
-    height: 110vh;
+    height: 150vh;
     width: 100%;
     display: table;
     border-bottom: 1px solid white;
@@ -9,7 +9,7 @@ a{
   cursor:unset;
 }
 
-h1 {
+.card h1 {
     color: white;
     display: table-cell;
     text-align: center;
