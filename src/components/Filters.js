@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./styles/Filters.module.css";
 
-const Filters = ({ fetchedCoins }) => {
+const Filters = ({ data }) => {
   const [filter, setFilter] = useState({});
 
   const submitHandler = (e) => {
@@ -14,16 +14,15 @@ const Filters = ({ fetchedCoins }) => {
     });
   };
 
-  // fetchedCoins = ALL FETCHED COINS array
+  // data = ALL FETCHED COINS array
   // filter = object of applied filters
 
-  console.log(filter.name);
   return (
     <>
       <form onSubmit={submitHandler} className={classes["filter-form"]}>
         <h1>Apply Filters</h1>
         <select name="sorting" id="sorting">
-          <option value="" disabled selected>
+          <option value="DEFAULT" disabled>
             Sort By
           </option>
           <option value="descending">Price Descending</option>

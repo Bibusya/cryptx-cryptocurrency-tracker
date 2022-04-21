@@ -8,10 +8,10 @@ const Coin = ({
   symbol,
   price,
   volume,
-  hour,
-  day,
-  sevenDay,
-  capitalization,
+  dayVolume,
+  hourPriceChange,
+  dayPriceChange,
+  sevenDayPriceChange,
 }) => {
   return (
     <>
@@ -24,26 +24,40 @@ const Coin = ({
             <p className={classes["coin-symbol"]}>{symbol}</p>
           </div>
           <div className={classes["coin-data"]}>
-            <p className={classes["coin-price"]}>$ {price}</p>
-            <p className={classes["1h"]}>
-              {hour.toLocaleString(undefined, {
-                style: "percent",
-              })}
-            </p>
-            <p className={classes["24h"]}>
-              {day.toLocaleString(undefined, {
-                style: "percent",
-              })}
-            </p>
-            <p className={classes["7d"]}>
-              {sevenDay.toLocaleString(undefined, {
-                style: "percent",
-              })}
-            </p>
+            <p className={classes["coin-price"]}>$ {price.toLocaleString()}</p>
+            {hourPriceChange < 0 ? (
+              <p className={classes["price-changed-red"]}>
+                {hourPriceChange.toFixed(2)} %
+              </p>
+            ) : (
+              <p className={classes["price-changed-green"]}>
+                {hourPriceChange.toFixed(2)} %
+              </p>
+            )}
+
+            {dayPriceChange < 0 ? (
+              <p className={classes["price-changed-red"]}>
+                {dayPriceChange.toFixed(2)} %
+              </p>
+            ) : (
+              <p className={classes["price-changed-green"]}>
+                {dayPriceChange.toFixed(2)} %
+              </p>
+            )}
+            {sevenDayPriceChange < 0 ? (
+              <p className={classes["price-changed-red"]}>
+                {sevenDayPriceChange.toFixed(2)} %
+              </p>
+            ) : (
+              <p className={classes["price-changed-green"]}>
+                {sevenDayPriceChange.toFixed(2)} %
+              </p>
+            )}
+
             <p className={classes["coin-volume"]}>
-              $ {volume.toLocaleString()}
+              $ {dayVolume.toLocaleString()}
             </p>
-            <p className={classes["mkt-cap"]}></p>
+            <p className={classes["mkt-cap"]}>$ {volume.toLocaleString()}</p>
           </div>
         </div>
       </div>
