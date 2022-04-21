@@ -1,0 +1,28 @@
+.container {
+    height: 130px;
+    margin-top: 5rem;
+    font-weight: 300;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly
+}
+
+.sum {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sum span {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid white;
+
+}
+
+.headtitle {
+    margin-top:10px;
+    font-weight: 300;
+    color: white
+}
