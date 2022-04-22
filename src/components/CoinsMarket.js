@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Filters from "./Filters";
 import SumInfo from "./SumInfo";
 import Coin from "./Coin";
@@ -7,29 +7,54 @@ import classes from "./styles/CoinMarket.module.css";
 
 const CoinsMarket = ({ fetchedCoins, onFilter }) => {
   const [nameSearch, setNameSearch] = useState("");
+  const [sortingSearch, setSortingSearch] = useState("");
+  const [fromSearch, setFromSearch] = useState("");
+  const [toSearch, setToSearch] = useState("");
   //name
   const nameFilterHandler = (name) => {
     setNameSearch(name);
   };
   //sorting
   const sortingFilterHandler = (sorting) => {
-    console.log(sorting);
+    setSortingSearch(sorting);
   };
   //From
   const fromFilterHandler = (from) => {
-    console.log(from);
+    setFromSearch(from);
   };
   //To
   const toFilterHandler = (to) => {
-    console.log(to);
+    setToSearch(to);
   };
 
+  console.log(nameSearch);
+  //Filtering
   const filteredCoins = fetchedCoins.filter((coin) => {
     return (
-      coin.name.toLowerCase().indexOf(nameSearch) >= 0 ||
-      coin.symbol.indexOf(nameSearch) == 0
+      (coin.name.toLowerCase().indexOf(nameSearch) >= 0 ||
+        coin.symbol.indexOf(nameSearch) == 0) &&
+      coin.current_price > fromSearch &&
+      coin.current_price < toSearch
     );
   });
+
+  //Reset ToSearch
+  useEffect(() => {
+    if (+toSearch <= 0) {
+      setToSearch("999999999");
+    }
+  }, [toSearch]);
+
+  if (sortingSearch === "descending") {
+    filteredCoins.sort(function (a, b) {
+      return parseFloat(b.current_price) - parseFloat(a.current_price);
+    });
+  }
+  if (sortingSearch === "ascending") {
+    filteredCoins.sort(function (a, b) {
+      return parseFloat(a.current_price) - parseFloat(b.current_price);
+    });
+  }
 
   return (
     <>

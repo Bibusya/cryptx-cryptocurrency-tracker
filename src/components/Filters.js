@@ -9,8 +9,8 @@ const Filters = ({
 }) => {
   const [nameFilter, setNameFilter] = useState("");
   const [sortingFilter, setSortingFilter] = useState("descending");
-  const [fromFilter, setFromFilter] = useState("");
-  const [toFilter, setToFilter] = useState("");
+  const [fromFilter, setFromFilter] = useState("0");
+  const [toFilter, setToFilter] = useState("99999999999");
   //Approach 1 - instead of form submission
   //Name Handler
   const nameChangeHandler = (event) => setNameFilter(event.target.value);
