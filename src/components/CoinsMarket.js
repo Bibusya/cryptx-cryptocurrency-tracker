@@ -6,9 +6,10 @@ import Description from "./Description";
 import classes from "./styles/CoinMarket.module.css";
 
 const CoinsMarket = ({ fetchedCoins, onFilter }) => {
+  const [nameSearch, setNameSearch] = useState("");
   //name
   const nameFilterHandler = (name) => {
-    console.log(name);
+    setNameSearch(name);
   };
   //sorting
   const sortingFilterHandler = (sorting) => {
@@ -23,11 +24,18 @@ const CoinsMarket = ({ fetchedCoins, onFilter }) => {
     console.log(to);
   };
 
+  const filteredCoins = fetchedCoins.filter((coin) => {
+    return (
+      coin.name.toLowerCase().indexOf(nameSearch) >= 0 ||
+      coin.symbol.indexOf(nameSearch) == 0
+    );
+  });
+
   return (
     <>
       <section>
         <div>
-          <SumInfo data={fetchedCoins} />
+          <SumInfo data={filteredCoins} />
         </div>
         <div>
           <div className={classes.card}>
@@ -39,7 +47,7 @@ const CoinsMarket = ({ fetchedCoins, onFilter }) => {
               onToFilter={toFilterHandler}
             />
             <Description />
-            {fetchedCoins.map((coin) => {
+            {filteredCoins.map((coin) => {
               return (
                 <Coin
                   key={coin.id}

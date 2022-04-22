@@ -11,7 +11,7 @@ const Filters = ({
   const [sortingFilter, setSortingFilter] = useState("descending");
   const [fromFilter, setFromFilter] = useState("");
   const [toFilter, setToFilter] = useState("");
-
+  //Approach 1 - instead of form submission
   //Name Handler
   const nameChangeHandler = (event) => setNameFilter(event.target.value);
   //Sorting Handler
@@ -26,7 +26,7 @@ const Filters = ({
   };
 
   useEffect(() => {
-    onNameFilter(nameFilter);
+    onNameFilter(nameFilter.toLowerCase());
     onSortingFilter(sortingFilter);
     onFromFilter(fromFilter);
     onToFilter(toFilter);

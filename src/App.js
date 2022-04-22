@@ -7,10 +7,6 @@ import CoinsMarket from "./components/CoinsMarket";
 
 const App = () => {
   const [coins, setCoins] = useState([]);
-  const [filteres, setFilteres] = useState({});
-  const filterHandler = (appliedFilters) => {
-    setFilteres(appliedFilters);
-  };
 
   useEffect(() => {
     const getData = async () => {
@@ -32,9 +28,7 @@ const App = () => {
     <>
       <Title />
       <section>
-        {coins.length > 0 && (
-          <CoinsMarket fetchedCoins={coins} onFilter={filterHandler} />
-        )}
+        {coins.length > 0 && <CoinsMarket fetchedCoins={coins} />}
       </section>
     </>
   );

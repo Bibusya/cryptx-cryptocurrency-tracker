@@ -6,4 +6,6 @@
 body {
   background-color: rgb(0, 0, 0);
   font-family: 'Lato', sans-serif;
+    transition:all 1s;
+
 }
