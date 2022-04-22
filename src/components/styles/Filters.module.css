@@ -5,8 +5,7 @@
     align-items: center;
     color: white;
     letter-spacing: .3rem;
-    padding: 2rem 0;
-    border-top: 1px solid white;
+    padding: 2rem 2.5rem;
 }
 .filter-form h1 {
     font-weight: 300;
@@ -16,15 +15,15 @@
 
 .filter-form input, select {
     padding: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.133);
-    color: white;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
     border: 1px solid white;
     border-radius: .5rem;
     margin-right: 1rem;
     width: 9rem;
 }
 button {
-    background-color: rgba(255, 255, 255, 0.133);
+    background-color: rgba(0, 0, 0, 0.133);
     padding: .5rem;
     color: white;
     border: 1px solid white;
@@ -33,7 +32,10 @@ button {
     margin-left: 2rem;
 }
 button:hover {
-    background-color: rgba(255, 255, 255, 0.317);
+    background-color: rgba(0, 0, 0, 0.828)
+}
+.filter-form input:focus, select:focus {
+    background-color: rgba(0, 0, 0, 0.828);
 }
 
 select option {

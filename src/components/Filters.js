@@ -1,37 +1,69 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./styles/Filters.module.css";
 
-const Filters = ({ data }) => {
-  const [filter, setFilter] = useState({});
+const Filters = ({
+  onNameFilter,
+  onSortingFilter,
+  onFromFilter,
+  onToFilter,
+}) => {
+  const [nameFilter, setNameFilter] = useState("");
+  const [sortingFilter, setSortingFilter] = useState("descending");
+  const [fromFilter, setFromFilter] = useState("");
+  const [toFilter, setToFilter] = useState("");
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    setFilter({
-      sorting: e.target[0].value,
-      name: e.target[1].value,
-      from: e.target[2].value,
-      to: e.target[3].value,
-    });
+  //Name Handler
+  const nameChangeHandler = (event) => setNameFilter(event.target.value);
+  //Sorting Handler
+  const sortingFilterHandler = (event) => setSortingFilter(event.target.value);
+  //From $ handler
+  const fromFilterHandler = (event) => {
+    setFromFilter(event.target.value);
+  };
+  //To $ handler
+  const toFilterHandler = (event) => {
+    setToFilter(event.target.value);
   };
 
-  // data = ALL FETCHED COINS array
-  // filter = object of applied filters
+  useEffect(() => {
+    onNameFilter(nameFilter);
+    onSortingFilter(sortingFilter);
+    onFromFilter(fromFilter);
+    onToFilter(toFilter);
+  }, [nameFilter, sortingFilter, fromFilter, toFilter]);
 
   return (
     <>
-      <form onSubmit={submitHandler} className={classes["filter-form"]}>
+      <form className={classes["filter-form"]}>
         <h1>Apply Filters</h1>
-        <select name="sorting" id="sorting">
+        <select
+          onChange={sortingFilterHandler}
+          value={sortingFilter}
+          name="sorting"
+          id="sorting"
+        >
           <option value="DEFAULT" disabled>
             Sort By
           </option>
-          <option value="descending">Price Descending</option>
-          <option value="ascending">Price Ascending</option>
+          <option value="descending">Mkt Cap ↓</option>
+          <option value="ascending">Mkt Cap ↑</option>
         </select>
-        <input placeholder="Name / Symbol" />
-        <input placeholder="Price from >" type="number" min="0" />
-        <input placeholder="< Price to" type="number" />
-        <button type="submit">Dive in</button>
+        <input
+          onChange={nameChangeHandler}
+          value={nameFilter}
+          placeholder="Name / Symbol"
+        />
+        <input
+          onChange={fromFilterHandler}
+          placeholder="Price from >"
+          type="number"
+          min="0"
+        />
+        <input
+          onChange={toFilterHandler}
+          placeholder="< Price to"
+          type="number"
+        />
       </form>
     </>
   );

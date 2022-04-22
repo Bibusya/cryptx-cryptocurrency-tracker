@@ -8,16 +8,15 @@ const SumInfo = ({ data }) => {
   let capSum = 0;
   let volSum = 0;
 
-  for (let i = 0; i < data.length; i++) {
-    capSum = +data[i].market_cap;
-    volSum = +data[i].total_volume;
-  }
-
   useEffect(() => {
+    for (let i = 0; i < data.length; i++) {
+      capSum += data[i].market_cap;
+      volSum += data[i].total_volume;
+    }
     setNumCoins(data.length);
     setMarketCap(capSum);
     setTotalVolume(volSum);
-  }, []);
+  }, [data]);
 
   return (
     <>
