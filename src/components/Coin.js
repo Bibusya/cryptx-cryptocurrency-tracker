@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./styles/Coin.module.css";
 
 const Coin = ({
-  rank,
   name,
   image,
   symbol,
@@ -18,7 +17,8 @@ const Coin = ({
       <div className={classes["coin-container"]}>
         <div className={classes["coin-row"]}>
           <div className={classes.coin}>
-            <p className={classes.rank}>{rank}</p>
+            <li className={classes.rank} />
+
             <img src={image} alt="crypto logo" />
             <h1>{name}</h1>
             <p className={classes["coin-symbol"]}>{symbol}</p>

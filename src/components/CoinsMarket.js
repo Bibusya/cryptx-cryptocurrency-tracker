@@ -10,6 +10,7 @@ const CoinsMarket = ({ fetchedCoins, onFilter }) => {
   const [sortingSearch, setSortingSearch] = useState("");
   const [fromSearch, setFromSearch] = useState("");
   const [toSearch, setToSearch] = useState("");
+
   //name
   const nameFilterHandler = (name) => {
     setNameSearch(name);
@@ -72,25 +73,30 @@ const CoinsMarket = ({ fetchedCoins, onFilter }) => {
               onToFilter={toFilterHandler}
             />
             <Description />
-            {filteredCoins.map((coin) => {
-              return (
-                <Coin
-                  key={coin.id}
-                  rank={coin.market_cap_rank}
-                  name={coin.name}
-                  price={coin.current_price}
-                  image={coin.image}
-                  symbol={coin.symbol}
-                  volume={coin.market_cap}
-                  dayVolume={coin.total_volume}
-                  hourPriceChange={coin.price_change_percentage_1h_in_currency}
-                  dayPriceChange={coin.price_change_percentage_24h_in_currency}
-                  sevenDayPriceChange={
-                    coin.price_change_percentage_7d_in_currency
-                  }
-                />
-              );
-            })}
+            <ol>
+              {filteredCoins.map((coin) => {
+                return (
+                  <Coin
+                    key={coin.id}
+                    name={coin.name}
+                    price={coin.current_price}
+                    image={coin.image}
+                    symbol={coin.symbol}
+                    volume={coin.market_cap}
+                    dayVolume={coin.total_volume}
+                    hourPriceChange={
+                      coin.price_change_percentage_1h_in_currency
+                    }
+                    dayPriceChange={
+                      coin.price_change_percentage_24h_in_currency
+                    }
+                    sevenDayPriceChange={
+                      coin.price_change_percentage_7d_in_currency
+                    }
+                  />
+                );
+              })}
+            </ol>
           </div>
         </div>
       </section>
