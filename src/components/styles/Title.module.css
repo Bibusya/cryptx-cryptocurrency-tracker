@@ -1,3 +1,11 @@
+@media only screen and (max-width: 1080px)  {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
 .card {
     height: 130vh;
     width: 100%;
