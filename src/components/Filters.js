@@ -45,8 +45,8 @@ const Filters = ({
           <option value="DEFAULT" disabled>
             Sort By
           </option>
-          <option value="descending">Mkt Cap ↓</option>
-          <option value="ascending">Mkt Cap ↑</option>
+          <option value="descending">Price ↓</option>
+          <option value="ascending">Price ↑</option>
         </select>
         <input
           onChange={nameChangeHandler}

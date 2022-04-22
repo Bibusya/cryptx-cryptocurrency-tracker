@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
       <Title />
-      <section>
+      <section id="main">
         {coins.length > 0 && <CoinsMarket fetchedCoins={coins} />}
       </section>
     </>

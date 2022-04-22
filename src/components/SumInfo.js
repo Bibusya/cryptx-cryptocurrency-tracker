@@ -31,12 +31,6 @@ const SumInfo = ({ data }) => {
           # of Coins<span>{numCoins}</span>
         </div>
       </div>
-      <ol className={classes.ol}>
-        <li>b</li>
-        <li>c</li>
-        <li>a</li>
-        <li>a</li>
-      </ol>
     </>
   );
 };
